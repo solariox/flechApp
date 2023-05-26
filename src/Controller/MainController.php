@@ -6,11 +6,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class ArticlesController extends AbstractController
+class MainController extends AbstractController
 {
-    #[Route(path: '/articles', name: 'articles', methods: ['GET'])]
+    #[Route(path: '/', name: 'main', methods: ['GET'])]
     public function list(): Response
     {
-        return new Response('Welcome to Latte and Code ');
+        return $this->render('base.html.twig');
     }
 }

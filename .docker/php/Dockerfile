@@ -1,4 +1,7 @@
 FROM php:8.2-fpm-buster
+
+
+
 ARG TIMEZONE
 
 COPY php.ini /usr/local/etc/php/conf.d/docker-php-config.ini
@@ -34,3 +37,7 @@ RUN ln -snf /usr/share/zoneinfo/${TIMEZONE} /etc/localtime && echo ${TIMEZONE} >
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 WORKDIR /var/www/symfony
+# Add a new user "john" with user id 8877
+RUN useradd -u 8877 john
+# Change to non-root privilege
+USER john
